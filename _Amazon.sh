@@ -1,1 +1,1 @@
-pipenv run python app.py amazon --test
+pipenv run python app.py amazon

@@ -1,0 +1,46 @@
+{
+  "asin_groups": 1,
+  "group_name_1": "RTX3060ti",
+  "asin_list": [
+    "B083Z5P6TX",
+    "B08P2HBBLX",
+    "B08P2D1JZZ",
+    "B083Z7TR8Z",
+    "B08P2H5LW2",
+    "B08R876RTH",
+    "B08NYNJ6RC",
+    "B08NYPKW1Z",
+    "B08NYP7KG6",
+    "B08NYPLXPJ",
+    "B08NYP7KG6",
+    "B08P2D3JSG",
+    "B08P2DQ28S",
+    "B08P3XJLJJ",
+    "B08P3V572B",
+    "B08NW5HNYW",
+    "B08NW693LG"
+  ],
+  "reserve_min_1": 380,
+  "reserve_max_1": 650,
+  "amazon_website": "smile.amazon.com"
+}
+
+/*
+B083Z5P6TX - ASUS TUF Gaming NVIDIA GeForce RTX 3060 Ti - $539.99
+B08P2HBBLX - ASUS Dual NVIDIA GeForce RTX 3060 Ti - $489.99
+B08P2D1JZZ - ASUS KO NVIDIA GeForce RTX 3060 Ti - $529.99
+B083Z7TR8Z - ASUS ROG Strix NVIDIA GeForce RTX 3060 Ti OC - $619.99
+B08P2H5LW2 - EVGA GeForce RTX 3060 Ti FTW Ultra Gaming - $509.99
+B08R876RTH - EVGA GeForce RTX 3060 Ti XC Gaming - $469.99
+B08NYNJ6RC - GIGABYTE GeForce RTX 3060 Ti Eagle - $459.99
+B08NYPKW1Z - GIGABYTE GeForce RTX 3060 Ti Eagle OC - $479.99
+B08NYP7KG6 - GIGABYTE GeForce RTX 3060 Ti Gaming OC - $519.99
+B08NYPLXPJ - GIGABYTE GeForce RTX 3060 Ti Gaming OC PRO - $519.99
+B08NYP7KG6 - GIGABYTE GeForce RTX 3060 Ti Gaming OC 3X WINDFORCE - $519.99
+B08P2D3JSG - MSI Gaming GeForce RTX 3060 Ti - $639.99
+B08P2DQ28S - MSI Gaming GeForce RTX 3060 Ti - $599.99
+B08P3XJLJJ - ZOTAC Gaming GeForce RTX 3060 Ti Twin Edge - $569.99
+B08P3V572B - ZOTAC Gaming GeForce RTX 3060 Ti Twin Edge OC - $614.99
+B08NW5HNYW - PNY GeForce RTX 3060 Ti Uprising Dual - $621.99
+B08NW693LG - PNY GeForce RTX 3060 Ti 8GB XLR8 Gaming Revel Epic-X -$621.99
+*/

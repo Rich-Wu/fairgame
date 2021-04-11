@@ -1,0 +1,30 @@
+{
+  "asin_groups": 1,
+  "group_name_1": "RTX3060",
+  "asin_list_1": [
+    "B08WGTL4CW",
+    "B08WHJPBFX",
+    "B08WM28PVH",
+    "B08X4V8N5Q",
+    "B08X4VJ6SB",
+    "B08WT47L8B",
+    "B08WPRMVWB",
+    "B08WTFG5BX",
+    "B08W8DGK3X"
+  ],
+  "reserve_min_1": 370,
+  "reserve_max_1": 560,
+  "amazon_website": "smile.amazon.com"
+}
+
+/*
+B08WGTL4CW - ASUS ROG Strix NVIDIA GeForce RTX 3060 OC
+B08WHJPBFX - ASUS TUF Gaming NVIDIA GeForce RTX 3060 OC
+B08WM28PVH - EVGA GeForce RTX 3060 XC Gaming
+B08X4V8N5Q - GIGABYTE GeForce RTX 3060 Gaming OC
+B08X4VJ6SB - GIGABYTE GeForce RTX 3060 Vision OC
+B08WT47L8B - MSI Gaming GeForce RTX 3060 Gaming X Trio
+B08WPRMVWB - MSI Gaming GeForce RTX 3060 Ventus 2X
+B08WTFG5BX - MSI Gaming GeForce RTX 3060 Ventus 3X
+B08W8DGK3X - ZOTAC Gaming GeForce RTX 3060 Twin Edge OC
+*/
