@@ -2,7 +2,8 @@
 
 # Table of Contents:
 * [About FairGame](#About-FairGame)
-    * [Current Functionality](#Current-Functionality)  
+    * [Current Functionality](#Current-Functionality)
+    * [Disclaimer](#Disclaimer) 
 * [Installation](#Installation)
     * [Requirements](#Requirements)
     * [Quick Start](#Quick-Start)
@@ -32,7 +33,7 @@
 
 # Quick Links
  * [Discord](https://discord.gg/4rfbNKrmnC) **DO NOT ASK QUESTIONS IN DISCORD BEFORE READING THIS DOCUMENT**
- * [Python Download (3.8.8)](https://www.python.org/downloads/release/python-388/)
+ * [Python Download (3.8.9)](https://www.python.org/downloads/release/python-389/)
 
 # About FairGame
 
@@ -62,6 +63,20 @@ FairGame only works on Amazon and can automatically place an order.
   * If you want to set purchase price ranges for several different products, but only want FairGame to purchase
     one of any of the products you've included in the configuration file, use the `--single-shot` option, see
     [Running the program](#Running-the-program)    
+
+### Disclaimer 
+
+WARNING: The use of this software can result in a Amazon restricting access to your account and make it difficult 
+for you to purchase products, with or without the bot. By using this software, you acknowledge these risks. These restrictions
+cannot and will not be resolved by the developer(s), nor can they be detected/resolved by the standard Amazon Customer Support,
+as far as we are aware. If this happens, the only resolution is to stop all Amazon monitors (e.g., FairGame, Distill.io,
+or other bots, etc.), wait, and hope the limits are lifted within a few days. If this is a major issue you should
+consider avoiding use of this software. 
+
+Account restrictions may be triggered by any of the following: 1) running multiple instances on one device, 2) running multiple instances on different devices, using the same account, regardless of their IP, proxy, or location, 3) configuring an instance to check stock too frequently/aggressively (default settings not guaranteed to be safe). 
+
+Symptoms of account restrictions include: 1) Fly-out (offers) window is missing/completely blank, even if there are listings for the ASIN, 2) frequent CAPTCHA checks, 3) inability to access the My Account page, add items to your cart, or complete purchases; usually displayed as a 503 error (Amazon Dogs & “SORRY we couldn’t find that page” message). You’ll likely have to sit-out a few days of drops to resolve the throttle.
+
 # Installation
 
 ## Requirements
@@ -69,7 +84,7 @@ FairGame only works on Amazon and can automatically place an order.
 ***!!! YOU WILL NEED TO USE THE 3.8 BRANCH OF PYTHON, ANY OTHER BRANCH/VERSION (Anaconda, 2.7, 3.9.x, 3.10, 4.0,
 toaster, etc.) BREAKS DEPENDENCIES !!!***
 
-It is best if you use the newest version of **3.8** (at this time, 3.8.8) but 3.8.5, 3.8.6, and 3.8.7 should also work. 
+It is best if you use the newest version of **3.8** (at this time, 3.8.9) but 3.8.5, 3.8.6, 3.8.7, and 3.8.8 should also work. 
 
 It also requires a working Chrome installation. 
 Running it on a potato (<2GB of RAM) is not suggested. 
@@ -81,14 +96,16 @@ regardless of your OS (obviously you aren't running .bat files if you aren't on 
 available on your OS). See [Platform Specific](#Platform-Specific) instructions for help installing Python and
 dependencies in other operating systems:
 1. [Turn on your computer](https://www.google.com/search?q=how+do+I+turn+on+my+computer)
-2. Install Python 3.8.5, 3.8.6, 3.8.7 or 3.8.8. Install to some location that does not include spaces in the path 
+2. [Install Python 3.8.9](https://www.python.org/downloads/release/python-389/). Install to some location that does not include spaces in the path 
    (we suggest C:\Python38). Click the checkbox that says Add Python 3.8 to PATH (or something similar) 
    during the installation.
    
    ![Add Python 3.8 to PATH](https://github.com/Hari-Nagarajan/fairgame/blob/master/docs/images/PythonInstalltoPath.png)
    
 3. Download GitHub Desktop and Open the FairGame Repository with GitHub Desktop (or download the zip file). 
-   Again, make sure this installs to a location without spaces in the path. If you need help with this, look at Wiki.
+   Again, make sure this installs to a location without spaces in the path, but it is *STRONGLY* suggested that you install
+   to the root of the drive (e.g., C:\fairgame). If you need help with GitHub Desktop, look at the
+   [Wiki](https://github.com/Hari-Nagarajan/fairgame/wiki/How-to-use-GitHub-Desktop-App).
 4. Open the FairGame folder in File Explorer. Double click __INSTALL (RUN FIRST).bat ***DON'T USE ADMINISTRATIVE MODE***.
    
    ![Run Install RUN FIRST.bat](https://github.com/Hari-Nagarajan/fairgame/blob/master/docs/images/Step4.png)
@@ -128,7 +145,7 @@ dependencies in other operating systems:
    
    ![Run Amazon.bat](https://github.com/Hari-Nagarajan/fairgame/blob/master/docs/images/Step7.png)
    
-8. Verify that the bot successfully makes it to the place your order page with the item you put in the config file. 
+8. Verify that the bot successfully places an order with the item you put in the config file. **NOTE: WITH 0.6.6, TEST MODE NO LONGER FUNCTIONS THE SAME WAY. YOU SHOULD TRY AND BUY SOMETHING TO VERIFY THE BOT WORKS FOR YOU!**
    If it does not, then:
    * You messed something up above, and need to fix it; or,
    * If it is asking you for your address and payment info, you need to do all of the following in a separate
@@ -141,12 +158,25 @@ dependencies in other operating systems:
      * ALSO see notes regarding EU and [current functionality](#Other-Notes-on-Functionality)
 9. Edit the `amazon_config.json` file with the item(s) you want to look for. See [Configuration](#Configuration) 
    and [Configuration Examples](#Configuration-Examples) for additional information
-10. Remove `--test` from `_Amazon.bat`
+10. Remove `--test` from `_Amazon.bat`. (See note in Step 8 above) 
+[How do I edit .bat files?](https://www.google.com/search?q=how+to+edit+bat+file+in+windows+10)
    
    ![Remove Test](https://github.com/Hari-Nagarajan/fairgame/blob/master/docs/images/Step10.png)
    
 11. Run `_Amazon.bat` and wait
 
+**Note:** If the terminal indicates that it attempts to add to cart and proceed to checkout, but it can't find the
+button to proceed to checkout and there are no items in your cart, or it has reached its maximum add to cart attempts,
+that means that it tried to add the product to cart, and it failed. This is exactly what happens if you were to try
+and and attempt to do this manually.
+
+![image](https://user-images.githubusercontent.com/74267670/115074770-2832d580-9ec8-11eb-8475-864d00e91d50.png)
+
+![image](https://user-images.githubusercontent.com/74267670/115074822-354fc480-9ec8-11eb-8cb6-075898ca20de.png)
+
+Furthermore, if the terminal indicates something about picking your address, and you did Step 8 above correctly (i.e.,
+tested the bot and it does not normally ask you for your address when checking out), then it is **VERY LIKELY** the product
+was already out of stock and Amazon is sending you to a garbage page.
 
 Additional information about running FairGame can be found in the rest of the documentation.
 
@@ -161,15 +191,16 @@ To get started, there are two options:
 To get the latest release as a convenient package, download it directly from
 the [Releases](https://github.com/Hari-Nagarajan/fairgame/releases)
 page on GitHub. The "Source code" zip or tar file are what you'll want. This can be downloaded and extracted into a
-directory of your choice (e.g. C:\fairgame).
+directory of your choice, it is *STRONGLY* suggested that you install to the root of the drive (e.g., C:\fairgame).
 
 #### Git
 
 If you want to manage the code via Git, you'll first need to clone this repository. If you are unfamiliar with Git,
 follow the [guide](https://github.com/Hari-Nagarajan/fairgame/wiki/How-to-use-GitHub-Desktop-App) on how to do that on
-our Wiki . You *can* use the "Download Zip" button on the GitHub repository's homepage but this makes receiving updates
+our [Wiki](https://github.com/Hari-Nagarajan/fairgame/wiki/How-to-use-GitHub-Desktop-App). 
+You *can* use the "Download Zip" button on the GitHub repository's homepage but this makes receiving updates
 more difficult. If you can get setup with the GitHub Desktop app, updating to the latest version of the bot takes 1
-click.
+click. Regardless, it is *STRONGLY* suggested that you install to the root of the drive (e.g., C:\fairgame)
 
 ### Installing Dependencies
 If you are on Windows, use `INSTALL (RUN FIRST).bat`. ***Do NOT use administrative mode***
@@ -287,7 +318,9 @@ pipenv run python app.py amazon [Options]
 Options:
   --headless          Runs Chrome in headless mode.
   
-  --test              Run the checkout flow but do not actually purchase the item[s]
+  --test              Run the checkout flow but do not actually purchase the item[s]. Only functional with `--alt-checkout` mode.
+  
+  --alt-checkout      Utilize the old add to cart method of checkout.
 
   --delay FLOAT       Time to wait between the end of one stock check and the beginning of the next stock check.
   
@@ -387,7 +420,7 @@ See [#asins](https://discord.gg/DuVXAN5FnN) channel on our Discord server, or lo
 These instructions are supplied by community members and any adjustments, corrections, improvements or clarifications
 are welcome. These are typically created during installation in a single environment, so there may be caveats or changes
 necessary for your environment. This isn't intended to be a definitive guide, but a starting point as validation that a
-platform can/does work. Please report back any suggestions to our [Discord](https://discord.gg/qDY2QBtAW6) feedback
+platform can/does work. Please report back any suggestions to our [Discord](https://discord.gg/wgCYBx9URn) feedback
 channel.
 
 #### Installation MacOS 
@@ -420,6 +453,9 @@ Open terminal. Either right click desktop and go to Open In Terminal, or search 
 
 Install Google Chrome:
 `wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo dpkg -i google-chrome-stable_current_amd64.deb`
+
+Add Universe repo (this might be optional depending on your distro):
+`sudo add-apt-repository universe && sudo apt update`
 
 Install Pip:
 `sudo apt install python3-pip`
@@ -599,6 +635,7 @@ developers.
 # Issues Running FairGame 
 ## Known Issues
 * DO NOT change the zoom setting of the browser (it must be at 100%). Selenium doesn't work with the zoom at any other setting.
+* 
 * Pipenv does not like spaces in file paths, so you will either need to run from a place where you do not have spaces 
   in the file path, or set the option for pipenv to run locally in relation to the current file directory with:
 ```shell
@@ -610,6 +647,8 @@ export PIPENV_VENV_IN_PROJECT=1 (Linux/Other)
 
 * One time passcode (OTP) doesn't work in headless. Turn it off when starting up a headless instance, then turn 
   it back on afterwords.
+  
+* Avoid installing FairGame on OneDrive or similar cloud storage - some people have issues with this.
 
 ## Troubleshooting
 
@@ -632,9 +671,9 @@ export PIPENV_VENV_IN_PROJECT=1 (Linux/Other)
   ```
 
 + **Error: ```selenium.common.exceptions.SessionNotCreatedException: Message: session not created: 
-  This version of ChromeDriver only supports Chrome version 89```**
+  This version of ChromeDriver only supports Chrome version 90```**
 
-  You are not running the proper version of Chrome this requires. As of this update, the current version is Chrome 89.
+  You are not running the proper version of Chrome this requires. As of this update, the current version is Chrome 90.
   Check your version by going to ```chrome://version/``` in your browser. We are going to be targeting the current stable
   build of chrome. If you are behind, please update, if you are on a beta or canary branch, you'll have to build your own
   version of chromedriver-py.
@@ -642,22 +681,37 @@ export PIPENV_VENV_IN_PROJECT=1 (Linux/Other)
 ## Frequently Asked Questions
 
 To keep up with questions, the Discord channel [#FAQ](https://discord.gg/GEsarYKMAw) is where you'll find the latest
-answers. If you don't find it there, ask in #tech-support. 
+answers. If you don't find it there, ask in #tech-support.
 
+1. **Why didn't Fairgame buy this GPU that I can see in my browser?**
+   
+   If Fairgame didn't attempt to buy it, then Fairgame didn't ever see it as in stock. Many stock alert services are
+   sending out affiliate URLs that appear to cache offers for some period of time, regardless of whether or not the item
+   is still in-stock and purchaseable. Many people have reported that they can see an item as in stock in their browser
+   but Fairgame either didn't see it, failed to check out, or logged some weird error condition.
+   
+   If you are trying to purchase an Nvidia 30-series or an AMD 6000-series GPU in 2021 then this may happen frequently for you.
+   These items appear to sell out within fractions of a second and a large a mount of luck will be involved. Please do not
+   create issues or ask for help when Fairgame "misses" a drop or tries to checkout but can't find the item in your cart.
+   We know that it's hard to buy these things right now - that's why we're all here. Good luck!
+   
 1. **Can I run multiple instances of the bot?**
+   
    It is possible, however we do not support running multiple instances nor any issues that may be encountered while doing so.
-
-2. **Does Fairgame automatically bypass CAPTCHA's on the store sites?**
+   
+1. **Does Fairgame automatically bypass CAPTCHA's on the store sites?**
+   
    The bot will try and auto-solve CAPTCHA's during the checkout process.
-
-3. **Does `--headless` work?**
+   
+1. **Does `--headless` work?**
+   
    Yes!  A community user identified the issue with the headless option while running on a Raspberry Pi. This allowed
    the developers to update the codebase to consistently work correctly on headless server environments. Give it a try
    and let us know if you have any issues.
-
-4. **Does Fairgame run on a Raspberry Pi?**
+   
+1. **Does Fairgame run on a Raspberry Pi?**
+   
    Yes, with caveats. Most people seem to have success with Raspberry Pi 4. The 2 GB model may need to run the headless
    option due to the smaller memory footprint. Still awaiting community feedback on running on a Pi 3. CPU and memory
    capacity seem to be the limiting factor for older Pi models. The Pi is also much slower then even a semi-recent
    (5 years or less) laptop. 
-

@@ -21,6 +21,7 @@ import os
 import platform
 import shutil
 import time
+import traceback
 from datetime import datetime
 from functools import wraps
 from pathlib import Path
@@ -63,11 +64,13 @@ def notify_on_crash(func):
     def decorator(*args, **kwargs):
         try:
             func(*args, **kwargs)
+
         except KeyboardInterrupt:
             pass
-        else:
+
+        except Exception as e:
+            log.error(traceback.format_exc())
             notification_handler.send_notification(f"FairGame has crashed.")
-            raise
 
     return decorator
 
@@ -184,10 +187,10 @@ def main():
     help="Purge Amazon credentials and prompt for new credentials",
 )
 @click.option(
-    "--alt-offers",
+    "--alt-checkout",
     is_flag=True,
     default=False,
-    help="Directly hit the offers page.  Preferred, but deprecated by Amazon.",
+    help="Use old add to cart method. Not preferred",
 )
 @click.option(
     "--captcha-wait",
@@ -214,7 +217,7 @@ def amazon(
     shipping_bypass,
     clean_profile,
     clean_credentials,
-    alt_offers,
+    alt_checkout,
     captcha_wait,
 ):
     notification_handler.sound_enabled = not disable_sound
@@ -247,7 +250,7 @@ def amazon(
         encryption_pass=p,
         log_stock_check=log_stock_check,
         shipping_bypass=shipping_bypass,
-        alt_offers=alt_offers,
+        alt_checkout=alt_checkout,
         wait_on_captcha_fail=captcha_wait,
     )
     try:
