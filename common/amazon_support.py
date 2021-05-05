@@ -42,6 +42,8 @@ MERCHANT_IDS = [
     "A3DWYIK6Y9EEQB",
     "A1AT7YVPFBWXBL",
     "A11IL2PNWYJU7H",
+    "A3OJWAJQNSBARP",
+    "A301WKE65PGVT5",
 ]
 
 
@@ -52,6 +54,7 @@ class AmazonItemCondition(Enum):
     Neuf = 10
     Neu = 10
     Nuovo = 10
+    Nieuw = 10
     Renewed = 20
     Refurbished = 20
     Rental = 30
@@ -120,6 +123,7 @@ class FGItem:
     name: str = None
     short_name: str = None
     furl: furl = None
+    pdp_url = None
     condition: AmazonItemCondition = AmazonItemCondition.New
     status_code: int = 200
     merchant_id: str = "any"
@@ -269,7 +273,7 @@ def get_item_condition(form_action) -> AmazonItemCondition:
         return AmazonItemCondition.Unknown
 
 
-def solve_captcha(session, form_element, pdp_url: str):
+def solve_captcha(session, form_element, domain: str):
     log.warning("Encountered CAPTCHA. Attempting to solve.")
     # Starting from the form, get the inputs and image
     captcha_images = form_element.xpath('//img[contains(@src, "amazon.com/captcha/")]')
@@ -288,7 +292,7 @@ def solve_captcha(session, form_element, pdp_url: str):
                     input_dict[form_input.name] = solution
                 else:
                     input_dict[form_input.name] = form_input.value
-            f = furl(pdp_url)  # Use the original URL to get the schema and host
+            f = furl(domain)  # Use the original URL to get the schema and host
             f = f.set(path=form_element.attrib["action"])
             f.add(args=input_dict)
             response = session.get(f.url)
@@ -321,3 +325,26 @@ def merchant_check(item, seller):
         return True
     else:
         return False
+
+
+def parse_condition(condition: str) -> AmazonItemCondition:
+    return AmazonItemCondition[condition]
+
+
+def min_total_price(seller: SellerDetail):
+    return seller.selling_price
+
+
+def new_first(seller: SellerDetail):
+    return seller.condition
+
+
+def has_captcha(tree):
+    return tree.xpath("//form[contains(@action,'validateCaptcha')]")
+
+
+def free_shipping_check(seller):
+    if seller.shipping_cost.amount > 0:
+        return False
+    else:
+        return True
